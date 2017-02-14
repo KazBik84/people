@@ -6,7 +6,9 @@ module.exports = function (config) {
     singleRun: true,
     frameworks: ['mocha', 'sinon'],
     files: ['webpack/tests.config.js'],
-    preprocessors: {'webpack/tests.config.js': ['webpack', 'sourcemap']},
+    preprocessors: {
+      'webpack/tests.config.js': ['webpack', 'sourcemap']
+    },
     reporters: ['dots'],
     webpack: {
       module: {

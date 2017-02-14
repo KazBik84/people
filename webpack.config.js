@@ -1,8 +1,9 @@
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
-  context: __dirname + '/app/react',
-  entry: './index',
+  entry: {
+    main: ['./app/react/index.js']
+  },
   output: {
     path: __dirname + '/app/assets/javascripts',
     filename: 'react_bundle.js'
@@ -10,15 +11,18 @@ module.exports = {
   module: {
     loaders: [
       {
+        key: 'jsx',
         test: /\.jsx?$/,
-        exclude: /node_modules/,
-        loader: 'babel-loader'
+        exclude: /(node_modules)/,
+        loaders: ['babel-loader']
       },
       {
+        key: 'scss',
         test: /\.scss$/,
         loader: ExtractTextPlugin.extract('css!sass')
       },
       {
+        key: 'css',
         test: /\.css$/,
         loader: ExtractTextPlugin.extract('css!sass')
       }

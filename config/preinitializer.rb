@@ -5,7 +5,7 @@ require 'konf'
 AppConfig = Konf.new(
   %w{
     ../config.yml
-    ../sec_config.yml
+    ../sec_config.yml.sample
   }.inject({}) do |config_hash, file_path|
     config_hash.deep_merge(
       begin
