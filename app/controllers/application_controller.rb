@@ -8,7 +8,6 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   before_filter :authenticate_user!
-  before_filter :connect_github
   before_filter :set_gon_data
 
   before_render :message_to_js
@@ -25,12 +24,6 @@ class ApplicationController < ActionController::Base
 
   def current_user?
     user == current_user
-  end
-
-  def connect_github
-    if signed_in? && !current_user.github_connected?
-      redirect_to github_connect_path
-    end
   end
 
   private
