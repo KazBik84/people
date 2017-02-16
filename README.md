@@ -81,28 +81,6 @@ Note that emails->internal is required if you want to sign up in the app and sho
 
 Make sure you generate `devise_secret_key` and provide it in `sec_config.yml`. You can generate a new secret with: `rake secret`.
 
-### Google Auth
-
-  * goto [https://console.cloud.google.com/](https://console.cloud.google.com/)
-  * create new project
-  * click `Use Google APIs` > `Credentials` > `OAuth consent screen` (second tab)
-  * fill in "Email address" and "Product name" and save
-  * go to `Credentials` (first tab)
-  * Create client ID: `New Credentials` > `OAuth client ID`
-  * choose `Web application` option
-  * set `Authorized JavaScript origins` to:
-  ```
-    http://localhost:3000
-  ```
-  * set `Authorized redirect URI` to
-  ```
-    http://localhost:3000/users/auth/google_oauth2/callback
-  ```
-
-### Github Auth
-  * go to: [https://github.com/settings/applications/new](https://github.com/settings/applications/new)
-  * create github application (callback address is `http://localhost:3000/users/auth/github/callback`)
-
 ### Feature flags
 
 The app uses Feature flags through Flip gem. The feature flag panel (requires admin privileges) is available at `/features`.

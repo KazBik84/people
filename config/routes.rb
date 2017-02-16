@@ -72,7 +72,6 @@ Hrguru::Application.routes.draw do
   resources :settings, only: [:update]
   get '/settings', to: 'settings#edit'
   root 'welcome#index'
-  get '/github_connect', to: 'welcome#github_connect'
 
   scope '/styleguide' do
     get '/css', to: 'pages#css'

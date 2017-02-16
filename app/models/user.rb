@@ -150,10 +150,6 @@ class User < ActiveRecord::Base
     super || NullRole.new
   end
 
-  def github_connected?
-    gh_nick.present? || without_gh == true
-  end
-
   def has_current_projects?
     current_memberships.present?
   end

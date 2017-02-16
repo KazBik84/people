@@ -9,43 +9,6 @@
       = link_to root_path, class: 'navbar-logo' do
         = image_tag 'logo.png', alt: "#{AppConfig.company_name} People"
     .navbar-collapse.collapse
-      - if signed_in? && current_user.github_connected?
-        %ul.nav.navbar-nav
-          %li{ class: menu_class('scheduling') }= link_to "Scheduling", all_scheduling_index_path
-          %li{ class: menu_class('users') }= link_to "Users", users_path
-          %li{ class: menu_class('dashboard') }= link_to "Projects", dashboard_index_path
-          %li{ class: menu_class('teams') }= link_to "Teams", teams_path
-          %li{ class: menu_class('project_info') }= link_to "Project Info", project_info_index_path
-          %li.dropdown
-            %a.dropdown-toggle{ href: '#', 'data-toggle' => 'dropdown' }
-              Skills
-              %b.caret
-            %ul.dropdown-menu
-              %li{ class: menu_class('skills') }= link_to 'My skills', user_skill_rates_path
-              %li{ class: menu_class('skills') }= link_to 'My skills history', skills_history_user_path(current_user)
-              - if current_user.leader?
-                %li{ class: 'divider', role: 'separator' }
-                %li{ class: 'dropdown-header' } My team members history
-                - team_members.each do |member|
-                  %li{ class: menu_class('skills') }= link_to member.name, skills_history_user_path(member)
-
-          - if current_user.admin?
-            %li.dropdown
-              %a.dropdown-toggle{ href: "#", :'data-toggle' => "dropdown" }
-                Other
-                %b.caret
-              %ul.dropdown-menu
-                %li{ class: menu_class('roles') }= link_to "Roles", roles_path
-                %li{ class: menu_class('abilities') }= link_to "Abilities", abilities_path
-                %li{ class: menu_class('skills') }= link_to "Skills", skills_path
-                %li= link_to "Reports", AppConfig.reports_url, target: '_blank'
-          - elsif current_user.talent? || current_user.leader?
-            %li.dropdown
-              %a.dropdown-toggle{ href: "#", :'data-toggle' => "dropdown" }
-                Other
-                %b.caret
-              %ul.dropdown-menu
-                %li{ class: menu_class('skills') }= link_to "Skills", skills_path
       - if signed_in?
         %ul.nav.navbar-nav.navbar-right.user-profile
           %li.dropdown
@@ -57,3 +20,20 @@
               %li= link_to 'Profile', user_path(current_user)
               %li
                 %a{ href: sign_out_path, data: { method: 'delete' } } Sign out
+        - if current_user.admin?
+          %li.dropdown
+            %a.dropdown-toggle{ href: "#", :'data-toggle' => "dropdown" }
+              Other
+              %b.caret
+            %ul.dropdown-menu
+              %li{ class: menu_class('roles') }= link_to "Roles", roles_path
+              %li{ class: menu_class('abilities') }= link_to "Abilities", abilities_path
+              %li{ class: menu_class('skills') }= link_to "Skills", skills_path
+              %li= link_to "Reports", AppConfig.reports_url, target: '_blank'
+        - elsif current_user.talent? || current_user.leader?
+          %li.dropdown
+            %a.dropdown-toggle{ href: "#", :'data-toggle' => "dropdown" }
+              Other
+              %b.caret
+            %ul.dropdown-menu
+              %li{ class: menu_class('skills') }= link_to "Skills", skills_path                

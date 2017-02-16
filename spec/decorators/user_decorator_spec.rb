@@ -22,13 +22,6 @@ describe UserDecorator do
     it { expect(subject.gravatar_image).to include(subject.gravatar_url.to_s) }
   end
 
-  describe '#github_link' do
-    before do
-      user.gh_nick = 'github_nick'
-    end
-    it { expect(subject.github_link).to include('github_nick') }
-  end
-
   describe '#skype_link' do
     before do
       user.skype = 'skype_login'

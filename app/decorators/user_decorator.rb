@@ -21,14 +21,6 @@ class UserDecorator < Draper::Decorator
     h.image_tag gravatar_url(size), options
   end
 
-  def github_link(options = {})
-    return unless github_connected?
-
-    h.link_to "https://github.com/#{gh_nick}" do
-      options[:icon] ? h.fa_icon("github-alt") : gh_nick
-    end
-  end
-
   def skype_link
     return unless skype?
 

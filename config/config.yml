@@ -1,9 +1,4 @@
 heroku_settings: &heroku_settings
-  github_client_id:     <%= ENV['GITHUB_CLIENT_ID'] %>
-  github_secret:        <%= ENV['GITHUB_CLIENT_SECRET'] %>
-  google_client_id:     <%= ENV['GOOGLE_CLIENT_ID'] %>
-  google_secret:        <%= ENV['GOOGLE_CLIENT_SECRET'] %>
-  google_domain:        <%= ENV['GOOGLE_DOMAIN'] %>
   api_token:            <%= ENV['API_TOKEN'] %>
   secret_token_key:     <%= ENV['SECRET_TOKEN_KEY'] %>
   sendgrid:
