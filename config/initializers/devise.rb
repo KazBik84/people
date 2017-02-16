@@ -13,20 +13,4 @@ Devise.setup do |config|
   config.password_length = 8..128
   config.reset_password_within = 6.hours
   config.sign_out_via = :get
-
-  require 'omniauth-google-oauth2'
-
-  config.omniauth(
-    :google_oauth2, AppConfig.google_client_id, AppConfig.google_secret,
-    { access_type: "offline", approval_prompt: "", hd: AppConfig.google_domain,
-      scope: 'userinfo.email, userinfo.profile, calendar'
-    }
-  )
-
-  config.omniauth(
-    :github,
-    AppConfig.github_client_id,
-    AppConfig.github_secret,
-    { scope: '' }
-  )
 end

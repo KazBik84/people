@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
-         :trackable, :validatable, :omniauthable, omniauth_providers: [:google_oauth2, :github]
+         :trackable, :validatable
 
   mount_uploader :gravatar, GravatarUploader
 
