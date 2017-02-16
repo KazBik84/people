@@ -1,14 +1,7 @@
 Hrguru::Application.routes.draw do
   resources :user_skill_rates, only: [:index, :update]
   resources :skills
-  devise_for(
-    :users,
-    controllers: {
-      omniauth_callbacks: 'omniauth_callbacks',
-      sessions: 'sessions'
-    },
-    skip: [:sessions]
-  )
+  devise_for :users
 
   devise_scope :user do
     get 'sign_in', to: 'welcome#index', as: :new_user_session
