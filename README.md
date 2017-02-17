@@ -34,8 +34,7 @@ Since the app uses Selenium webdriver for running feature specs, make sure you h
     bin/setup
   ```
  * the setup script will create your own copy of database.yml and sec_config.yml for your local configuration
- * the app uses Google Auth; in order to configure it, check **Dev auth setup** and **Local settings** sections below
- * once you get your authentication credentials, go to `config/sec_config.yml` and update your `google_client_id`, `google_secret`, `google_domain`, `github_client_id`, `github_secret` accordingly
+  * once you get your authentication credentials, go to `config/sec_config.yml` and update your `google_client_id`, `google_secret`, `google_domain`, `github_client_id`, `github_secret` accordingly
  * in `config/sec_config.yml` set `emails/internal` to the domain which you want to allow for new users
  * create a Slack team account and configure its integration (see **Slack integration** below)
 
