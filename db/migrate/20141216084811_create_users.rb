@@ -8,9 +8,7 @@ class CreateUsers < ActiveRecord::Migration
       t.string :current_sign_in_ip
       t.string :last_sign_in_ip
       t.datetime :team_join_time
-      t.string :oauth_token
       t.string :refresh_token
-      t.datetime :oauth_expires_at
       t.string :first_name
       t.string :last_name
       t.string :email

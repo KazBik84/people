@@ -38,7 +38,6 @@ class UsersController < ApplicationController
       user_roles_repository: user_roles_repository
     )
   end
-
   def update
     if UpdateUser.new(user, user_params, current_user).call
       info = { notice: t('users.show.updated') }

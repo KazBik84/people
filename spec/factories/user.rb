@@ -7,7 +7,6 @@ FactoryGirl.define do
     gh_nick { Faker::Name.first_name }
     employment { 100 }
     without_gh false
-    oauth_token '123'
     gravatar { File.open(Rails.root.join('spec', 'fixtures', 'gravatar', 'gravatar.jpg')) }
     user_notes { Faker::Lorem.sentence }
 

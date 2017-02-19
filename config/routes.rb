@@ -3,10 +3,7 @@ Hrguru::Application.routes.draw do
   resources :skills
   devise_for :users
 
-  devise_scope :user do
-    get 'sign_in', to: 'welcome#index', as: :new_user_session
-    delete 'sign_out', to: 'sessions#destroy'
-  end
+
 
   authenticated :user do
     root 'users#index', as: 'listing'
