@@ -2,6 +2,17 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :trackable, :validatable
 
+  attr_accessor :login
+
+  def self.find_for_database_authentication(warden_conditions)
+    conditions = warden_conditions.dup
+    if login = conditions.delete(:login)
+      where(conditions.to_hash).where(['lower(username) = :value OR lower(email) = :value', { :value => login.downcase }]).first
+    elsif conditions.has_key?(:username) || conditions.has_key?(:email)
+      where(conditions.to_hash).first
+    end
+  end
+
   mount_uploader :gravatar, GravatarUploader
 
   has_many :memberships, -> { order(:ends_at) }, dependent: :destroy
@@ -48,7 +59,7 @@ class User < ActiveRecord::Base
       .group('positions.starts_at')
   }, through: :positions, source: :role
 
-  validates :first_name, :last_name, presence: true
+  validates :first_name, :last_name, :username, presence: true
   validates :email, presence: true, uniqueness: true
   validates :employment, inclusion: { in: 0..200, message: 'must be between 0-200' }
   validates :phone, phone_number: true, length: { maximum: 16 }, allow_blank: true

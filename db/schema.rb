@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170201102606) do
+ActiveRecord::Schema.define(version: 20170220192803) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -245,12 +245,14 @@ ActiveRecord::Schema.define(version: 20170201102606) do
     t.integer  "role_id"
     t.boolean  "admin",              default: false
     t.integer  "commitment"
+    t.string   "username"
   end
 
   add_index "users", ["contract_type_id"], name: "index_users_on_contract_type_id", using: :btree
   add_index "users", ["email"], name: "index_users_on_email", using: :btree
   add_index "users", ["location_id"], name: "index_users_on_location_id", using: :btree
   add_index "users", ["primary_role_id"], name: "index_users_on_primary_role_id", using: :btree
+  add_index "users", ["username"], name: "index_users_on_username", unique: true, using: :btree
 
   add_foreign_key "skills", "skill_categories"
   add_foreign_key "user_skill_rates", "skills"

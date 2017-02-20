@@ -1,4 +1,7 @@
 = react_component('users', users_index_page.react_props(current_user) )
 Hello 
 = current_user.first_name
+= link_to 'Log out', destroy_user_session_path
+or
+= link_to 'Edit your profile', edit_user_registration_path
 

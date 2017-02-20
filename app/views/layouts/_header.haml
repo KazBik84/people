@@ -9,7 +9,7 @@
       = link_to root_path, class: 'navbar-logo' do
         = image_tag 'logo.png', alt: "#{AppConfig.company_name} People"
     .navbar-collapse.collapse
-      - if signed_in?
+      - if current_user
         %ul.nav.navbar-nav.navbar-right.user-profile
           %li.dropdown
             %a.dropdown-toggle{ href: '#', data: { toggle: 'dropdown' } }

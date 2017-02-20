@@ -2,7 +2,7 @@ class ApplicationController < ActionController::Base
   include BeforeRender
   include Pundit
   include Flip::ControllerFilters
-  before_action :add_first_and_last_name_parms, if: :devise_controller?
+  before_action :configure_permitted_parameters, if: :devise_controller?
 
   expose(:team_members) { fetch_team_members }
 
@@ -29,8 +29,11 @@ class ApplicationController < ActionController::Base
 
   private
 
-  def add_first_and_last_name_parms
-    devise_parameter_sanitizer.for(:sign_up) { |u| u.permit( :first_name, :last_name, :email, :password, :password_confirmation)}
+  def configure_permitted_parameters
+    devise_parameter_sanitizer.for(:sign_up) { |u| u.permit( :first_name, :last_name, 
+                                                             :email, :password, 
+                                                             :password_confirmation,
+                                                             :username)}
   end
 
   def user_not_authorized
